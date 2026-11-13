@@ -1,0 +1,10 @@
+node_modules/
+.next/
+.env.local
+.env.*.local
+*.log
+WhatsApp Unknown */
+_backups_*.zip
+
+_backups/
+scrollcraft/builds/*/lab/

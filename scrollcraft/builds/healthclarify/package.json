@@ -1,0 +1,7 @@
+{
+  "name": "healthclarify-scroll-build",
+  "private": true,
+  "dependencies": {
+    "playwright-core": "^1.65.0"
+  }
+}

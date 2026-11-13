@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HealthClarify · lab reports in plain words</title>
+<meta name="description" content="Upload a lab report and see where each number sits on its printed range, with questions ready for your doctor. Educational only, not a diagnosis.">
+<meta name="theme-color" content="#0b3b3a">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='9' fill='%230b3b3a'/><path d='M6 17h5l3-7 4 13 3-6h5' fill='none' stroke='%23ffffff' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Manrope:wght@600;700;800&family=Noto+Sans+Devanagari:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="scrollcraft.css">
+<link rel="stylesheet" href="page.css">
+</head>
+<body class="no-js">
+<a class="skip" href="#main" data-i18n="skip">Skip to the page</a>
+<div class="sc-grain" aria-hidden="true"></div>
+<div class="cut" id="cut" aria-hidden="true"></div>
+
+<!-- App chrome. This is the navigation: the same four-step stepper the
+     product uses, plus the file it is holding. -->
+<aside class="rail" aria-label="Report steps" data-i18n-attr="aria-label:rail.aria">
+  <a class="rail__brand" href="#ch-upload" aria-label="HealthClarify, back to upload" data-i18n-attr="aria-label:brand.aria">
+    <span class="mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg>
+    </span>
+    <span class="rail__name">Health<span>Clarify</span></span>
+  </a>
+
+  <div class="file" id="fileChip" data-state="empty">
+    <span class="file__icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>
+    </span>
+    <span class="file__txt"><b id="fileName">No report yet</b><small id="fileMeta">Nothing is loaded</small></span>
+  </div>
+
+  <ol class="steps" id="steps" aria-label="Progress" data-i18n-attr="aria-label:steps.aria">
+    <li><a href="#ch-upload" data-step="upload"><span class="steps__dot" aria-hidden="true"></span><span class="steps__label" data-i18n="step.upload">Upload</span></a></li>
+    <li><a href="#ch-consent" data-step="consent"><span class="steps__dot" aria-hidden="true"></span><span class="steps__label" data-i18n="step.consent">Consent</span></a></li>
+    <li><a href="#ch-read" data-step="read"><span class="steps__dot" aria-hidden="true"></span><span class="steps__label" data-i18n="step.read">Reading</span></a></li>
+    <li><a href="#ch-plain" data-step="plain"><span class="steps__dot" aria-hidden="true"></span><span class="steps__label" data-i18n="step.plain">Plain words</span></a></li>
+    <li><a href="#ch-check" data-step="check"><span class="steps__dot" aria-hidden="true"></span><span class="steps__label" data-i18n="step.check">Check and ask</span></a></li>
+    <li><a href="#ch-start" data-step="start"><span class="steps__dot" aria-hidden="true"></span><span class="steps__label" data-i18n="step.start">Start</span></a></li>
+  </ol>
+
+  <div class="rail__foot">
+    <p data-i18n="rail.edu">Educational only. Not a diagnosis.</p>
+    <a class="rail__link" href="/dashboard" data-i18n="rail.dash">See the demo dashboard</a>
+    <a class="btn btn--small" href="/analyze" data-i18n="cta.open">Open the analyzer</a>
+  </div>
+</aside>
+
+<div class="strip" role="note">
+  <span data-i18n="strip.sample">Sample mode. Every value on this page is fictional.</span>
+  <div class="langbar" role="group" aria-label="Switch language" data-i18n-attr="aria-label:lang.switch">
+    <button type="button" data-lang="en" lang="en" aria-pressed="true">English</button>
+    <button type="button" data-lang="hi" lang="hi" aria-pressed="false">हिन्दी</button>
+    <button type="button" data-lang="mr" lang="mr" aria-pressed="false">मराठी</button>
+  </div>
+  <a href="/safety" data-i18n="strip.link">How we keep it safe</a>
+</div>
+
+<main id="main">
+
+  <!-- 1 · UPLOAD ·········································································
+       Layered: far wash, back sheets, the raw report, the upload card, a loupe
+       and paper edge in front. The headline sits between report and loupe. -->
+  <section id="ch-upload" class="ch ch--upload" data-chapter="upload" data-sc-act="flow" aria-labelledby="h-upload">
+    <div class="planes" aria-hidden="true">
+      <div class="pl pl--wash" data-depth="0.40"></div>
+      <div class="pl pl--back" data-depth="0.28" data-mx="-6" data-my="-4">
+        <div class="sheet sheet--ghost sheet--g1"></div>
+        <div class="sheet sheet--ghost sheet--g2"></div>
+      </div>
+      <div class="pl pl--report" data-depth="0.14" data-mx="-14" data-my="-8">
+        <div class="sheet sheet--raw"><div class="sheet__head"><b>SAMPLE DIAGNOSTICS</b><span>FICTIONAL REPORT</span></div><pre id="heroLines"></pre></div>
+      </div>
+    </div>
+
+    <div class="upload">
+      <div class="upload__copy">
+        <h1 id="h-upload" data-i18n-html="hero.h1">Upload a report.<br>Read it in plain words.</h1>
+        <p class="lede" data-i18n="hero.lede">See where each number sits on its printed range, with a question ready for your doctor.</p>
+
+        <div class="drop" id="drop">
+          <input class="drop__input" id="fileInput" type="file" accept="image/jpeg,image/png,image/webp,application/pdf" aria-describedby="dropHint dropMsg">
+          <label class="drop__label" for="fileInput">
+            <span class="drop__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M5 20h14"/></svg>
+            </span>
+            <span class="drop__title" data-i18n="drop.title">Drop a PDF or photo here, or choose a file</span>
+            <span class="drop__hint" id="dropHint" data-i18n="drop.hint">JPEG, PNG, WebP or PDF. Up to 10 MB.</span>
+          </label>
+          <p class="drop__msg" id="dropMsg" role="status" aria-live="polite"></p>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn--primary" type="button" id="useSample" data-i18n="hero.sample">Use the sample report</button>
+          <a class="link" href="/analyze" data-i18n="hero.own">Upload your own in the analyzer</a>
+        </div>
+        <p class="fine draftnote" data-i18n="draft"></p>
+      </div>
+    </div>
+
+    <div class="pl pl--lens" id="lens" data-depth="-0.16" data-mx="22" data-my="14" aria-hidden="true">
+      <div class="lens"><span class="lens__line">11.2 <small>g/dL</small></span><span class="lens__rng">13.5 - 17.5</span></div>
+    </div>
+    <div class="pl pl--mist" data-depth="-0.32" data-mx="30" data-my="10" aria-hidden="true"></div>
+  </section>
+
+  <!-- 2 · CONSENT ································································ -->
+  <section id="ch-consent" class="ch ch--consent" data-chapter="consent" data-sc-act="flow" aria-labelledby="h-consent">
+    <div class="consent">
+      <header class="consent__head" data-sc-in>
+        <h2 id="h-consent" data-i18n="consent.h2">Two choices before anything leaves your browser.</h2>
+        <p class="lede" data-i18n="consent.lede">Both start off. You can stop at any step.</p>
+      </header>
+
+      <div class="consent__body">
+        <fieldset class="switches" data-sc-in>
+          <legend class="sr-only" data-i18n="consent.legend">Consent choices</legend>
+          <label class="switch">
+            <input type="checkbox" role="switch" id="cOcr">
+            <span class="switch__ui" aria-hidden="true"></span>
+            <span class="switch__txt"><b data-i18n="sw.ocr.t">Read online</b><small data-i18n="sw.ocr.d">Your file goes to Datalab, which reads the text in it.</small></span>
+          </label>
+          <label class="switch">
+            <input type="checkbox" role="switch" id="cAi">
+            <span class="switch__ui" aria-hidden="true"></span>
+            <span class="switch__txt"><b data-i18n="sw.ai.t">Pick out results with AI</b><small data-i18n="sw.ai.d">Only the lines that look like lab results (not the file) go to Groq, which picks out names, values, units and printed ranges.</small></span>
+          </label>
+        </fieldset>
+
+        <section class="leaves" data-sc-in aria-labelledby="h-leaves">
+          <h3 id="h-leaves" data-i18n="leaves.h">Leaves this device right now</h3>
+          <ul id="leaves" aria-live="polite"></ul>
+          <p class="fine" data-i18n="leaves.fine">This page sends nothing. The analyzer asks the same two questions first.</p>
+        </section>
+      </div>
+
+      <div class="consent__foot" data-sc-in>
+        <button class="btn btn--primary" type="button" id="readBtn" data-i18n="read.btn">Read the sample report</button>
+        <span class="fine" id="readHint">Reads the fictional sample, on this device.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · READING · pan ····························································
+       Pages of the raw report cross a scan line. The filter is the real thing:
+       a line is kept when it holds a test name or a number with a unit. -->
+  <section id="ch-read" class="ch ch--read" data-chapter="read" data-sc-act="pan" data-sc-span="1.7" aria-labelledby="h-read">
+    <div data-sc-stage class="readstage">
+      <div class="readhead">
+        <h2 id="h-read" data-i18n="read.h2">Finding the numbers.</h2>
+        <p data-i18n="read.p">A plain filter, not a doctor. It keeps a line when it holds a test name, or a number with a unit.</p>
+        <dl class="tally">
+          <div><dt data-i18n="tally.read">Lines read</dt><dd id="tRead">0</dd></div>
+          <div><dt data-i18n="tally.kept">Kept</dt><dd id="tKept" class="is-kept">0</dd></div>
+          <div><dt data-i18n="tally.interp">Interpreted</dt><dd>0</dd></div>
+        </dl>
+      </div>
+      <div class="scanline" aria-hidden="true"></div>
+      <div class="rail3" id="rail3" data-sc-pan="0.02"></div>
+    </div>
+  </section>
+
+  <!-- 4 · PLAIN WORDS · pin · THE PEAK ···········································
+       The line becomes the ruler. A focus band sweeps the report; each raw line
+       resolves into a ruler as it crosses it. -->
+  <section id="ch-plain" class="ch ch--plain" data-chapter="plain" data-sc-act="pin" data-sc-span="3.2" aria-labelledby="h-plain">
+    <div data-sc-stage class="plainstage" id="plainStage">
+      <aside class="reader" aria-live="off">
+        <p class="reader__panel" id="rPanel">Haemoglobin</p>
+        <h2 id="h-plain" class="reader__name"><span id="rName">Hemoglobin</span> <small id="rAbbr">Hb</small></h2>
+        <p class="reader__sentence" id="rSentence"></p>
+        <p class="reader__range" id="rRange"></p>
+        <p class="reader__sum" id="rSum"></p>
+      </aside>
+      <div class="feedwrap">
+        <div class="focus" aria-hidden="true"></div>
+        <ol class="feed" id="feed"></ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · CHECK AND ASK ···························································· -->
+  <section id="ch-check" class="ch ch--check" data-chapter="check" data-sc-act="flow" aria-labelledby="h-check">
+    <div class="check">
+      <header class="check__head" data-sc-in>
+        <h2 id="h-check" data-i18n="check.h2">Check one against your original. Then take the questions.</h2>
+        <p class="lede" data-i18n="check.lede">Change the value to what your own paper says. The ruler and the list below follow it.</p>
+      </header>
+
+      <div class="check__grid">
+        <figure class="orig" data-sc-reveal="left" data-sc-reveal-at="0.10 0.50">
+          <figcaption class="orig__cap" data-i18n="check.cap">As printed on the sample report</figcaption>
+          <pre class="orig__line" id="origLine"></pre>
+          <div class="orig__ctl">
+            <label for="pickTest" data-i18n="check.test">Test</label>
+            <select id="pickTest"></select>
+            <label for="pickVal" data-i18n="check.value">Value on your report</label>
+            <div class="orig__val"><input id="pickVal" type="number" inputmode="decimal" step="any"><span id="pickUnit"></span></div>
+          </div>
+          <div class="ruler ruler--solo" id="soloRuler" aria-hidden="true"></div>
+          <p class="orig__verdict" id="origVerdict" role="status" aria-live="polite"></p>
+        </figure>
+
+        <section class="ask" data-sc-in aria-labelledby="h-ask">
+          <h3 id="h-ask" data-i18n="ask.h">Questions for your appointment</h3>
+          <p class="fine" id="askLead"></p>
+          <ul class="ask__list" id="askList"></ul>
+          <div class="ask__actions">
+            <button class="btn btn--ghost" type="button" id="copyAsk" data-i18n="ask.copy">Copy the list</button>
+            <span class="fine" id="askMsg" role="status" aria-live="polite"></span>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · START ····································································· -->
+  <section id="ch-start" class="ch ch--start" data-chapter="start" data-sc-act="flow" aria-labelledby="h-start">
+    <div class="start">
+      <div class="start__main" data-sc-in>
+        <h2 id="h-start" data-i18n="start.h2">Ready for yours?</h2>
+        <p class="lede" data-i18n="start.lede">Choose a language, then open the analyzer. It asks before anything is sent.</p>
+
+        <form class="startform" id="startForm" action="/analyze" method="get" novalidate>
+          <fieldset class="langs">
+            <legend data-i18n="lang.legend">Language</legend>
+            <label class="langs__opt"><input type="radio" name="lang" value="en" checked><span lang="en">English</span></label>
+            <label class="langs__opt"><input type="radio" name="lang" value="hi"><span lang="hi">हिन्दी</span></label>
+            <label class="langs__opt"><input type="radio" name="lang" value="mr"><span lang="mr">मराठी</span></label>
+          </fieldset>
+
+          <label class="ack">
+            <input type="checkbox" id="ackBox">
+            <span data-i18n="ack">I understand HealthClarify explains reports. It does not diagnose or advise treatment.</span>
+          </label>
+
+          <div class="startform__actions">
+            <button class="btn btn--primary" type="submit" id="startBtn" disabled aria-disabled="true" data-i18n="cta.open">Open the analyzer</button>
+            <span class="fine" id="startHint">Tick the box to continue.</span>
+          </div>
+        </form>
+
+        <p class="emergency"><b data-i18n="emerg.t">Feeling unwell right now?</b> <span data-i18n="emerg.p">Do not wait for a report if you have severe symptoms such as chest pain, trouble breathing or fainting. Get medical help now. In India, call 112.</span></p>
+        <p class="fine draftnote" data-i18n="draft"></p>
+      </div>
+
+      <footer class="foot">
+        <span data-i18n="foot.edu">HealthClarify · educational only</span>
+        <nav aria-label="Legal" data-i18n-attr="aria-label:foot.aria"><a href="/safety" data-i18n="nav.safety">Safety</a><a href="/privacy" data-i18n="nav.privacy">Privacy</a><a href="/terms" data-i18n="nav.terms">Terms</a><a href="/accessibility" data-i18n="nav.accessibility">Accessibility</a></nav>
+      </footer>
+    </div>
+  </section>
+
+</main>
+
+<script src="data.js"></script>
+<script src="i18n.js"></script>
+<script src="scrollcraft.js"></script>
+<script src="page.js"></script>
+<noscript><style>.no-js-note{display:block}</style></noscript>
+<p class="no-js-note" role="note">This page is a scroll experience and needs JavaScript. The analyzer itself is at <a href="/analyze">/analyze</a>.</p>
+</body>
+</html>
