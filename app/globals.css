@@ -9,9 +9,13 @@ html[data-senior="true"]{--font-scale:1.17;--target:1.22}html[data-senior="true"
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
 
 /* Fluid page framing and visible emphasis without blocking first paint. */
-body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{font-family:var(--font-body),system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 html{-webkit-text-size-adjust:100%}
-h1,h2,h3,.brand,.result-value{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+h1,h2,h3,.brand,.result-value{font-family:var(--font-head),var(--font-body),system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+/* Same type voice as the scroll page: heavy Manrope headings, balanced wrapping, steady digits. */
+h1,h2,h3,.hero h1,.info-hero h1,.dash-heading h1{font-weight:800;text-wrap:balance}
+.result-value,.summary-card strong{font-variant-numeric:tabular-nums}
+html[lang="hi"] h1,html[lang="mr"] h1,html[lang="hi"] h2,html[lang="mr"] h2,html[lang="hi"] h3,html[lang="mr"] h3,html[lang="hi"] .hero h1,html[lang="mr"] .hero h1,html[lang="hi"] .info-hero h1,html[lang="mr"] .info-hero h1,html[lang="hi"] .dash-heading h1,html[lang="mr"] .dash-heading h1{font-weight:700}
 .site-header{-webkit-backdrop-filter:blur(10px)}
 .header-inner{max-width:none;padding-left:max(clamp(18px,4vw,64px),env(safe-area-inset-left));padding-right:max(clamp(18px,4vw,64px),env(safe-area-inset-right))}
 .nav{gap:clamp(18px,3.4vw,52px)}
