@@ -138,7 +138,11 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 .explanation{font-size:.9375rem;color:var(--body)}
 .discussion{background:var(--saffron-soft);color:#5c3d08}
 .discussion strong{color:var(--saffron-ink)}
-@media(min-width:861px){
+/* Wide screens: two result cards per row. Each card keeps its normal stacked layout inside. */
+@media(min-width:1100px){
+  .result-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
+}
+@media(min-width:861px) and (max-width:1099px){
   .result-list .result-card{display:grid;grid-template-columns:minmax(0,1fr) minmax(250px,330px);column-gap:34px;align-items:center}
   .result-list .result-top{display:contents}
   .result-list .result-top>div:first-child{grid-column:1;grid-row:1}
